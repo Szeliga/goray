@@ -7,5 +7,5 @@ import (
 )
 
 func main() {
-	fmt.Println(math.Vector{X: 1, Y: 1, Z: 1})
+	fmt.Println(math.Vector{X: 1., Y: 1., Z: 1.})
 }
