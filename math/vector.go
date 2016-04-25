@@ -4,9 +4,7 @@ import "math"
 
 // Vector - struct holding X Y Z values of a 3D vector
 type Vector struct {
-	X float64
-	Y float64
-	Z float64
+	X, Y, Z float64
 }
 
 // Add - adds two vectors together
