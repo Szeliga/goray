@@ -42,8 +42,8 @@ func TestCrossProduct(t *testing.T) {
 	assert.Equal(t, Vector{0., 0., 1.}, result, "cross product returns a vector perpendicular to the other two")
 }
 
-func TestToVersor(t *testing.T) {
-	assert.Equal(t, Vector{1., 0., 0.}, Vector{10., 0., 0.}.ToVersor(), "returns a unit vector (versor) from the given vector")
-	assert.Equal(t, Vector{0., 1., 0.}, Vector{0., 10., 0.}.ToVersor(), "returns a unit vector (versor) from the given vector")
-	assert.Equal(t, Vector{0., 0., 1.}, Vector{0., 0., 10.}.ToVersor(), "returns a unit vector (versor) from the given vector")
+func TestNormalize(t *testing.T) {
+	assert.Equal(t, Vector{1., 0., 0.}, Vector{10., 0., 0.}.Normalize(), "returns a unit vector (versor) from the given vector")
+	assert.Equal(t, Vector{0., 1., 0.}, Vector{0., 10., 0.}.Normalize(), "returns a unit vector (versor) from the given vector")
+	assert.Equal(t, Vector{0., 0., 1.}, Vector{0., 0., 10.}.Normalize(), "returns a unit vector (versor) from the given vector")
 }

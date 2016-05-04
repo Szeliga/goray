@@ -53,7 +53,7 @@ func (a Vector) Cross(b Vector) Vector {
 	}
 }
 
-// ToVersor - returns a versor created from the given vector
-func (a Vector) ToVersor() Vector {
+// Normalize - returns a versor created from the given vector
+func (a Vector) Normalize() Vector {
 	return a.MultiplyByScalar(1. / a.Length())
 }
