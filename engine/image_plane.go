@@ -40,3 +40,12 @@ func (plane *ImagePlane) Render() {
 	defer f.Close()
 	png.Encode(f, plane.Img)
 }
+
+// Iterate over the image plane and call the provided function for each pixel
+func (plane *ImagePlane) Iterate(pixelColor func(int, int) color.RGBA) {
+	for x := 0; x < plane.Width; x++ {
+		for y := 0; y < plane.Height; y++ {
+			plane.SetPixel(x, y, pixelColor(x, y))
+		}
+	}
+}
