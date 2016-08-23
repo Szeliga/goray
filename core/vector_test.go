@@ -22,9 +22,12 @@ func TestMultiplyByScalar(t *testing.T) {
 }
 
 func TestLength(t *testing.T) {
-	assert.Equal(t, 3., Vector{3., 0., 0.}.Length(), "calculates the length(magnitude) correctly for Vector{3., 0., 0.}")
-	assert.Equal(t, 6., Vector{6., 0., 0.}.Length(), "calculates the length(magnitude) correctly for Vector{6., 0., 0.}")
-	assert.Equal(t, 6.324555320336759, Vector{6., 2., 0.}.Length(), "calculates the length(magnitude) correctly for Vector{6., 2., 0.}")
+	assert.Equal(t, 3., Vector{3., 0., 0.}.Length(),
+		"calculates the length(magnitude) correctly for Vector{3., 0., 0.}")
+	assert.Equal(t, 6., Vector{6., 0., 0.}.Length(),
+		"calculates the length(magnitude) correctly for Vector{6., 0., 0.}")
+	assert.Equal(t, 6.324555320336759, Vector{6., 2., 0.}.Length(),
+		"calculates the length(magnitude) correctly for Vector{6., 2., 0.}")
 }
 
 func TestDotProductOfTwoPerpendicularVectors(t *testing.T) {
@@ -39,11 +42,15 @@ func TestDotProductOfTwoParallelVectors(t *testing.T) {
 
 func TestCrossProduct(t *testing.T) {
 	result := Vector{1., 0., 0.}.Cross(Vector{0., 1., 0.})
-	assert.Equal(t, Vector{0., 0., 1.}, result, "cross product returns a vector perpendicular to the other two")
+	assert.Equal(t, Vector{0., 0., 1.}, result,
+		"cross product returns a vector perpendicular to the other two")
 }
 
 func TestNormalize(t *testing.T) {
-	assert.Equal(t, Vector{1., 0., 0.}, Vector{10., 0., 0.}.Normalize(), "returns a unit vector (versor) from the given vector")
-	assert.Equal(t, Vector{0., 1., 0.}, Vector{0., 10., 0.}.Normalize(), "returns a unit vector (versor) from the given vector")
-	assert.Equal(t, Vector{0., 0., 1.}, Vector{0., 0., 10.}.Normalize(), "returns a unit vector (versor) from the given vector")
+	assert.Equal(t, Vector{1., 0., 0.}, Vector{10., 0., 0.}.Normalize(),
+		"returns a unit vector (versor) from the given vector")
+	assert.Equal(t, Vector{0., 1., 0.}, Vector{0., 10., 0.}.Normalize(),
+		"returns a unit vector (versor) from the given vector")
+	assert.Equal(t, Vector{0., 0., 1.}, Vector{0., 0., 10.}.Normalize(),
+		"returns a unit vector (versor) from the given vector")
 }
