@@ -1,20 +1,24 @@
 package main
 
 import (
+	"fmt"
 	"image/color"
+	"time"
 
 	"github.com/szeliga/goray/engine"
 )
 
 func main() {
-	plane := engine.NewImagePlane(200, 200)
-	plane.Iterate(func(x int, y int) color.RGBA {
+	var width = 200
+	var height = 200
+	scene := engine.NewScene(width, height)
+	scene.Iterate(func(x, y int) color.RGBA {
 		return color.RGBA{
-			uint8(x * 255 / plane.Width),
-			uint8(y * 255 / plane.Height),
+			uint8(x * 255 / width),
+			uint8(y * 255 / height),
 			100,
 			255,
 		}
 	})
-	plane.Render()
+	scene.Save(fmt.Sprintf("./renders/%d.png", time.Now().Unix()))
 }
