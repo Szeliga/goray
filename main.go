@@ -12,7 +12,7 @@ func main() {
 	var width = 200
 	var height = 200
 	scene := engine.NewScene(width, height)
-	scene.Iterate(func(x, y int) color.RGBA {
+	scene.EachPixel(func(x, y int) color.RGBA {
 		return color.RGBA{
 			uint8(x * 255 / width),
 			uint8(y * 255 / height),

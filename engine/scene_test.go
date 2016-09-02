@@ -7,6 +7,7 @@ import (
 	"math/rand"
 	"os"
 	"testing"
+	"time"
 
 	"github.com/stretchr/testify/assert"
 )
@@ -85,6 +86,6 @@ func generateImage(w, h int, pixelColor color.RGBA) *image.RGBA {
 }
 
 func randomColor() color.RGBA {
-	rand := rand.New(rand.NewSource(99))
+	rand := rand.New(rand.NewSource(time.Now().Unix()))
 	return color.RGBA{uint8(rand.Intn(255)), uint8(rand.Intn(255)), uint8(rand.Intn(255)), 255}
 }
