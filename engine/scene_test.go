@@ -20,11 +20,11 @@ func TestNewSceneReturnsANewScene(t *testing.T) {
 		"creates an image.RGBA with proper bounds")
 }
 
-func TestSceneIterateSetsEachPixelToTheProvidedFunctionReturn(t *testing.T) {
+func TestSceneEachPixelSetsEachPixelToTheProvidedFunctionReturn(t *testing.T) {
 	scene := NewScene(4, 4)
 	c := randomColor()
 
-	scene.Iterate(func(x, y int) color.RGBA { return c })
+	scene.EachPixel(func(x, y int) color.RGBA { return c })
 	img := generateImage(4, 4, c)
 	assert.True(t, assert.ObjectsAreEqualValues(img, scene.Img),
 		"sets every pixel of the image to the provided values")
@@ -34,8 +34,8 @@ func TestSceneSetPixelSetsTheSpecifiedPixelToTheSpecifiedColor(t *testing.T) {
 	scene := NewScene(4, 4)
 	black := color.RGBA{0, 0, 0, 255}
 	white := color.RGBA{255, 255, 255, 255}
-	scene.SetPixel(0, 0, black)
-	scene.SetPixel(3, 3, white)
+	scene.setPixel(0, 0, black)
+	scene.setPixel(3, 3, white)
 	assert.True(t, assert.ObjectsAreEqualValues(scene.Img.At(0, 0), black),
 		"sets the top left pixel to a black color")
 	assert.True(t, assert.ObjectsAreEqualValues(scene.Img.At(3, 3), white),
@@ -45,7 +45,7 @@ func TestSceneSetPixelSetsTheSpecifiedPixelToTheSpecifiedColor(t *testing.T) {
 func TestSceneSavePersistsTheFileOnTheDisk(t *testing.T) {
 	scene := NewScene(4, 4)
 	c := randomColor()
-	scene.Iterate(func(x, y int) color.RGBA { return c })
+	scene.EachPixel(func(x, y int) color.RGBA { return c })
 	scene.Save("./temp.png")
 
 	infile, err := os.Open("./temp.png")
@@ -67,7 +67,7 @@ func TestSceneSavePersistsTheFileOnTheDisk(t *testing.T) {
 func TestSceneSavePanicsWhenFileCannotBePersisted(t *testing.T) {
 	scene := NewScene(4, 4)
 	c := randomColor()
-	scene.Iterate(func(x, y int) color.RGBA { return c })
+	scene.EachPixel(func(x, y int) color.RGBA { return c })
 	assert.Panics(t, func() {
 		scene.Save("/etc/temp.png")
 	}, "panics when the file cannot be persisted")

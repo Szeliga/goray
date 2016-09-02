@@ -22,18 +22,13 @@ func NewScene(width int, height int) *Scene {
 	}
 }
 
-// Iterate over the image s and call the provided function for each pixel
-func (s *Scene) Iterate(colorFunction func(int, int) color.RGBA) {
+// EachPixel traverses the image s and calls the provided function for each pixel
+func (s *Scene) EachPixel(colorFunction func(int, int) color.RGBA) {
 	for x := 0; x < s.Width; x++ {
 		for y := 0; y < s.Height; y++ {
-			s.SetPixel(x, y, colorFunction(x, y))
+			s.setPixel(x, y, colorFunction(x, y))
 		}
 	}
-}
-
-// SetPixel sets the specified pixel to the specified color
-func (s *Scene) SetPixel(x int, y int, color color.RGBA) {
-	s.Img.Set(x, y, color)
 }
 
 // Save exports the image to hdd
@@ -45,4 +40,8 @@ func (s *Scene) Save(filename string) {
 	}
 	defer f.Close()
 	png.Encode(f, s.Img)
+}
+
+func (s *Scene) setPixel(x int, y int, color color.RGBA) {
+	s.Img.Set(x, y, color)
 }
